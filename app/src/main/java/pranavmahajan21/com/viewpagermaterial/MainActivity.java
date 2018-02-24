@@ -29,16 +29,16 @@ public class MainActivity extends ParentActivity {
             ((LinearLayout) findViewById(R.id.header_LL)).addView(imageSliderView);
         }
 
-//        viewPager = (ViewPager) findViewById(R.id.viewpager);
-//
-//        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new OneFragment(), "ONE");
-//        adapter.addFragment(new OneFragment(), "TWO");
-//        adapter.addFragment(new OneFragment(), "THREE");
-//        viewPager.setAdapter(adapter);
-//
-//        tabLayout = (TabLayout) findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(viewPager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new OneFragment(), "ONE");
+        adapter.addFragment(new OneFragment(), "TWO");
+        adapter.addFragment(new OneFragment(), "THREE");
+        viewPager.setAdapter(adapter);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 
