@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ViewPagerMaterial</string>
+    <string name="title_activity_image_scale">ImageScaleActivity</string>
 </resources>
