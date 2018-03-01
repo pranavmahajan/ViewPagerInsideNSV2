@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".ParentActivity" />
         <activity android:name=".ZeroActivity">
             <intent-filter>
@@ -21,7 +21,8 @@
         <activity
             android:name=".ImageScaleActivity"
             android:label="@string/title_activity_image_scale"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LLWeightActivity"></activity>
     </application>
 
 </manifest>
