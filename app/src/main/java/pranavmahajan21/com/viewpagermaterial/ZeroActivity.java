@@ -27,7 +27,7 @@ public class ZeroActivity extends AppCompatActivity {
     }
 
     public void onDoubt3(View view) {
-        nextIntent = new Intent(ZeroActivity.this, ImageScaleActivity.class);
+        nextIntent = new Intent(ZeroActivity.this, LLWeightActivity.class);
         startActivity(nextIntent);
     }
 }
