@@ -22,7 +22,8 @@
             android:name=".ImageScaleActivity"
             android:label="@string/title_activity_image_scale"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LLWeightActivity"></activity>
+        <activity android:name=".LLWeightActivity" />
+        <activity android:name=".TabActivity"></activity>
     </application>
 
 </manifest>

@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:onClick="onDoubt3"
         android:text="LL weight issue" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onDoubt4"
+        android:text="Fragment Content issue" />
 </LinearLayout>

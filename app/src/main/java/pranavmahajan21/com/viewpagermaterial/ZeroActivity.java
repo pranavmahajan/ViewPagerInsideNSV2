@@ -30,4 +30,9 @@ public class ZeroActivity extends AppCompatActivity {
         nextIntent = new Intent(ZeroActivity.this, LLWeightActivity.class);
         startActivity(nextIntent);
     }
+
+    public void onDoubt4(View view) {
+        nextIntent = new Intent(ZeroActivity.this, TabActivity.class);
+        startActivity(nextIntent);
+    }
 }
