@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,9 +50,9 @@ public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.MyVi
     public void onBindViewHolder(final StudentRVAdapter.MyViewHolder holder, int position) {
         Student tempStudent = studentList.get(position);
 
-        holder.id_TV.setText(tempStudent.getId());
-        holder.name_TV.setText(tempStudent.getName());
-        holder.marks_TV.setText(tempStudent.getMarks());
+        holder.id_TV.setText(tempStudent.getId()+"");
+        holder.name_TV.setText(tempStudent.getName()+"");
+        holder.marks_TV.setText(tempStudent.getMarks()+"");
 
 
 
@@ -59,6 +60,6 @@ public class StudentRVAdapter extends RecyclerView.Adapter<StudentRVAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return studentList.size();
+        return (studentList.size()>0?studentList.size():0);
     }
 }

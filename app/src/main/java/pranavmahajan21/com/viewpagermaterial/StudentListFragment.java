@@ -13,21 +13,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 
-public class StudentListFragment extends Fragment{
+
+public class StudentListFragment extends Fragment {
 
     private RecyclerView student_RV;
     private StudentRVAdapter adapter;
-
+    TabActivity mTabActivity;
+//    private List
 
     public StudentListFragment() {
-        // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        adapter = new StudentRVAdapter(getActivity(), studentList);
+
 
     }
 
@@ -42,8 +45,9 @@ public class StudentListFragment extends Fragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        mTabActivity = (TabActivity) getActivity();
         student_RV = (RecyclerView) getActivity().findViewById(R.id.student_RV);
+        adapter = new StudentRVAdapter(getActivity(),mTabActivity.selectedConditionList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         student_RV.setLayoutManager(mLayoutManager);
         student_RV.setItemAnimator(new DefaultItemAnimator());
