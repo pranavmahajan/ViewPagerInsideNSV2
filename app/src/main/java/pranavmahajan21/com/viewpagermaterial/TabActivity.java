@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,8 @@ public class TabActivity extends AppCompatActivity {
     protected List<Student> selectedConditionList;
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
+   public  class ViewPagerAdapter extends FragmentPagerAdapter {
+        public  List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager manager) {
@@ -52,7 +53,17 @@ public class TabActivity extends AppCompatActivity {
             mFragmentTitleList.add(title);
         }
 
-        @Override
+       @Override
+       public void destroyItem(ViewGroup container, int position, Object object) {
+           super.destroyItem(container, position, object);
+       }
+
+       @Override
+       public int getItemPosition(Object object) {
+           return POSITION_NONE;
+       }
+
+       @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
@@ -122,22 +133,33 @@ public class TabActivity extends AppCompatActivity {
 
 
         viewPager.setAdapter(adapter);
-//        viewPager.setOffscreenPageLimit(1);
+
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.i(APP_NAME, "onPageScrolled()       " + position);
+
+
             }
 
             @Override
             public void onPageSelected(int position) {
                 Log.i(APP_NAME, "onPageSelected()       " + position);
-
                 assignListAccordingToPosition(position);
-//                adapter.notifyDataSetChanged();
+                if (getSupportFragmentManager().getFragments().get(position) instanceof StudentListFragment)
+                {
+                    StudentListFragment studentListFragment = (StudentListFragment) getSupportFragmentManager().getFragments().get(position);
+                    if(studentListFragment.getAdapter()!=null)
+                    {
+                        studentListFragment.getAdapter().notifyDataSetChanged();
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
 
             }
 
