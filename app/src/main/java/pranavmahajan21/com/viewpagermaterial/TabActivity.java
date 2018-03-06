@@ -37,9 +37,7 @@ public class TabActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-//Fragment fragment = null;
-//switch (po)
-//fragment.
+
             return mFragmentList.get(position);
         }
 

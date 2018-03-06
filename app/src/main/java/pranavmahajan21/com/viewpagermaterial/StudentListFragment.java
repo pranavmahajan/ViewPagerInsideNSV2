@@ -58,11 +58,7 @@ public class StudentListFragment extends Fragment {
         return mView;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        adapter.notifyDataSetChanged();
-    }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
