@@ -27,8 +27,8 @@ public class TabActivity extends AppCompatActivity {
     protected List<Student> selectedConditionList;
 
 
-   public  class ViewPagerAdapter extends FragmentPagerAdapter {
-        public  List<Fragment> mFragmentList = new ArrayList<>();
+    public class ViewPagerAdapter extends FragmentPagerAdapter {
+        public List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager manager) {
@@ -51,17 +51,17 @@ public class TabActivity extends AppCompatActivity {
             mFragmentTitleList.add(title);
         }
 
-       @Override
-       public void destroyItem(ViewGroup container, int position, Object object) {
-           super.destroyItem(container, position, object);
-       }
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            super.destroyItem(container, position, object);
+        }
 
-       @Override
-       public int getItemPosition(Object object) {
-           return POSITION_NONE;
-       }
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
 
-       @Override
+        @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
@@ -87,6 +87,9 @@ public class TabActivity extends AppCompatActivity {
         studentList.add(new Student(11, "Student11", 20));
         studentList.add(new Student(12, "Student12", 70));
         studentList.add(new Student(13, "Student13", 80));
+        studentList.add(new Student(14, "Student14", 35));
+        studentList.add(new Student(15, "Student15", 30));
+        studentList.add(new Student(16, "Student16", 45));
 
         studentList0Above = new ArrayList<>();
         studentList25Above = new ArrayList<>();
@@ -110,27 +113,27 @@ public class TabActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
 
-        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapterVP = new ViewPagerAdapter(getSupportFragmentManager());
 
         if (studentList75Above.size() > 0) {
-            adapter.addFragment(new StudentListFragment(), "75+");
+            adapterVP.addFragment(new StudentListFragment(), "75+");
             selectedConditionList = selectedConditionList == null ? studentList75Above : selectedConditionList;
         }
         if (studentList50Above.size() > 0) {
-            adapter.addFragment(new StudentListFragment(), "50+");
+            adapterVP.addFragment(new StudentListFragment(), "50+");
             selectedConditionList = selectedConditionList == null ? studentList50Above : selectedConditionList;
         }
         if (studentList25Above.size() > 0) {
-            adapter.addFragment(new StudentListFragment(), "25+");
+            adapterVP.addFragment(new StudentListFragment(), "25+");
             selectedConditionList = selectedConditionList == null ? studentList25Above : selectedConditionList;
         }
         if (studentList0Above.size() > 0) {
-            adapter.addFragment(new StudentListFragment(), "0+");
+            adapterVP.addFragment(new StudentListFragment(), "0+");
             selectedConditionList = selectedConditionList == null ? studentList0Above : selectedConditionList;
         }
 
 
-        viewPager.setAdapter(adapter);
+        viewPager.setAdapter(adapterVP);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
@@ -148,16 +151,15 @@ public class TabActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 Log.i(APP_NAME, "onPageSelected()       " + position);
                 assignListAccordingToPosition(position);
-                if (getSupportFragmentManager().getFragments().get(position) instanceof StudentListFragment)
-                {
-                    StudentListFragment studentListFragment = (StudentListFragment) getSupportFragmentManager().getFragments().get(position);
-                    if(studentListFragment.getAdapter()!=null)
-                    {
+                List<Fragment> allFragments = getSupportFragmentManager().getFragments();
+                if (allFragments.get(position) instanceof StudentListFragment) {
+                    StudentListFragment studentListFragment = (StudentListFragment) allFragments.get(position);
+                    if (studentListFragment.getAdapter() != null) {
                         studentListFragment.getAdapter().notifyDataSetChanged();
                     }
                 }
 
-                adapter.notifyDataSetChanged();
+                adapterVP.notifyDataSetChanged();
 
             }
 
@@ -166,25 +168,6 @@ public class TabActivity extends AppCompatActivity {
 
             }
         });
-
-
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                Log.i(APP_NAME, "onTabSelected()       " + tab);
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//                Log.i(APP_NAME, "onTabUnselected()       " + tab);
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//                Log.i(APP_NAME, "onTabReselected()       " + tab);
-//            }
-//        });
-//
 
     }
 
@@ -197,6 +180,9 @@ public class TabActivity extends AppCompatActivity {
             System.out.println("Selected List " + selectedConditionList.size());
         } else if (position == 2) {
             selectedConditionList = studentList25Above.size() > 0 ? studentList25Above : new ArrayList<Student>();
+            System.out.println("Selected List " + selectedConditionList.size());
+        } else if (position == 3) {
+            selectedConditionList = studentList25Above.size() > 0 ? studentList0Above : new ArrayList<Student>();
             System.out.println("Selected List " + selectedConditionList.size());
         }
 

@@ -23,7 +23,11 @@
             android:label="@string/title_activity_image_scale"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LLWeightActivity" />
-        <activity android:name=".TabActivity"></activity>
+        <activity android:name=".TabActivity" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

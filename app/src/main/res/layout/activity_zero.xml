@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:onClick="onDoubt4"
         android:text="Fragment Content issue" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onDoubt5"
+        android:text="Scrolling issue" />
 </LinearLayout>

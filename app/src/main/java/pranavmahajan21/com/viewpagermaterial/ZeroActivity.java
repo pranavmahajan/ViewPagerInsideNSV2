@@ -35,4 +35,9 @@ public class ZeroActivity extends AppCompatActivity {
         nextIntent = new Intent(ZeroActivity.this, TabActivity.class);
         startActivity(nextIntent);
     }
+
+    public void onDoubt5(View view) {
+        nextIntent = new Intent(ZeroActivity.this, ScrollingActivity.class);
+        startActivity(nextIntent);
+    }
 }
