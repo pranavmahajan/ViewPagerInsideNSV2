@@ -40,4 +40,9 @@ public class ZeroActivity extends AppCompatActivity {
         nextIntent = new Intent(ZeroActivity.this, ScrollingActivity.class);
         startActivity(nextIntent);
     }
+
+    public void onDoubt6(View view) {
+        nextIntent = new Intent(ZeroActivity.this, LoginActivity.class);
+        startActivity(nextIntent);
+    }
 }
