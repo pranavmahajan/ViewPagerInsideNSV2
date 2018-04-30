@@ -46,6 +46,19 @@ public class SessionTabListActivity extends DaddySessionActivity {
 
     public List<Session> listInAction;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_session_tab);
+        initThings();
+//        setToolbar(currentMenuItem.getAliasName(), false, null);
+        findThings();
+        initView();
+        initListeners();
+
+
+    }
     private void prepareContentsForList() {
         //            https://stackoverflow.com/questions/4011075/how-do-you-format-the-day-of-the-month-to-say-11th-21st-or-23rd-in-java
         listDataChild = new LinkedHashMap<String, List<Session>>();
@@ -156,8 +169,9 @@ public class SessionTabListActivity extends DaddySessionActivity {
 
             tabLayout.setTabTextColors(ColorUtils.blendARGB(colorPrimary, Color.parseColor("#FFFFFF"), 0.5F), Color.parseColor("#FFFFFF"));
 
-
-            listInAction = new ArrayList<List<Session>>(listDataChild.values()).get(0);
+            listInAction = new ArrayList<>();
+            assignListAccordingToPosition(0);
+//            listInAction.add((Session) new ArrayList<List<Session>>(listDataChild.values()).get(0));
 
             final ViewPagerAdapter adapterVP = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -187,13 +201,13 @@ public class SessionTabListActivity extends DaddySessionActivity {
                     Log.i(Constants.APP_NAME, className + "onPageSelected()       " + position);
 
                     date_TV.setText(listDataHeader.get(position));
-
-                    assignListAccordingToPosition(position);
                     List<Fragment> allFragments = getSupportFragmentManager().getFragments();
                     if (allFragments.get(position) instanceof SessionListFragment) {
                         SessionListFragment studentListFragment = (SessionListFragment) allFragments.get(position);
                         if (studentListFragment.getSessionRVAdapter() != null) {
+
 //                            studentListFragment.getSessionRVAdapter().swapData(listInAction);
+                            assignListAccordingToPosition(position);
                             studentListFragment.getSessionRVAdapter().notifyDataSetChanged();
                         }
                     }
@@ -235,26 +249,23 @@ public class SessionTabListActivity extends DaddySessionActivity {
 
 
     public void assignListAccordingToPosition(int position) {
-        listInAction = new ArrayList<List<Session>>(listDataChild.values()).get(position);
+//
+        listInAction.clear();
+        System.out.println("Position "+listDataChild.values().size());
+        List mList = new ArrayList<List<Session>>(listDataChild.values()).get(position);
+        System.out.println("List Size "+mList.size());
+        listInAction.addAll(mList);
+//        if(listDataChild.containsKey(position)) {
+//            listInAction.clear();
+//            listInAction.addAll(listDataChild.get(position));
+//        }
 //        listInAction = ((List<List<Session>>) listDataChild.values()).get(position);
     }
 
     private void initListeners() {
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_session_tab);
-
-        initThings();
-//        setToolbar(currentMenuItem.getAliasName(), false, null);
-        findThings();
-        initView();
-        initListeners();
-
+    public List<Session> getListInAction() {
+        return listInAction;
     }
-
-
-
 }

@@ -49,7 +49,7 @@ public class SessionRVAdapter extends RecyclerView.Adapter<SessionRVAdapter.MyVi
 
 
     public SessionRVAdapter(Context context, List<Session> sessionList) {
-        super();
+//        super();
         this.context = context;
         this.sessionList = sessionList;
         myApp = (MyApp) context.getApplicationContext();
@@ -91,6 +91,7 @@ public class SessionRVAdapter extends RecyclerView.Adapter<SessionRVAdapter.MyVi
 
     @Override
     public int getItemCount() {
+
         return sessionList.size();
     }
 }

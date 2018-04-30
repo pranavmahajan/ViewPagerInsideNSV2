@@ -29,7 +29,7 @@ import pranavmahajan21.com.viewpagermaterial.util.ItemClickSupport;
 
 public class SessionListFragment extends Fragment {
     String className = "SessionFrag      ";
-
+//    SessionTabListActivity
     //    https://stackoverflow.com/questions/12739909/send-data-from-activity-to-fragment-in-android
 
     private RecyclerView sessions_RV;
@@ -71,7 +71,7 @@ public class SessionListFragment extends Fragment {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 Log.i(Constants.APP_NAME, className + "   position : " + position);
-                Session tempSession = activity.listInAction.get(position);
+                Session tempSession = activity.getListInAction().get(position);
 
                 Toast.makeText(getActivity(), tempSession.getName(), Toast.LENGTH_SHORT).show();
 
