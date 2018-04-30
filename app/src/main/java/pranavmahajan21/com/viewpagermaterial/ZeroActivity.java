@@ -18,6 +18,7 @@ public class ZeroActivity extends AppCompatActivity {
 
     public void onDoubt1(View view) {
         nextIntent = new Intent(ZeroActivity.this, MainActivity.class);
+        nextIntent = new Intent(ZeroActivity.this, LogoActivity.class);
         startActivity(nextIntent);
     }
 
