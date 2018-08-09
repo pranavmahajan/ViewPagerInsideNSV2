@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onDoubt3"
-        android:text="LL weight issue" />
+        android:text="Keyboard next issue" />
 
     <Button
         android:layout_width="match_parent"
